@@ -1,0 +1,512 @@
+@font-face {/*это для шрифта который самый большой  */
+    font-family: 'Impact', sans-serif;/*'Impact' это название шрифта  */
+    src: url(../fonts/impact.woff2);/*путь к папке где находится сам шрифт 'Impact'*/
+}
+
+
+html{
+    box-sizing: border-box;/*задает правильную блочнуб модель 
+    у нас изначально контент бок а нам нужен border-box */
+}
+*, /*3 - наследника этой модели выше */
+*::before,
+*::after{
+    box-sizing: inherit;
+}
+a{
+    color: inherit;/* ссылки будет принемать цвет от класов выше */
+    text-decoration: none; /* убрать синие подчеркивание под словами */
+    
+    
+}
+li{  /* */
+    list-style: none;
+}
+.big-container{/* это стандарт рамки что-бы наш концент был одного и тогоже размера на всех мониках*/
+    max-width: 1220px;/* максимальная ширина 1200 + 20px с учетом свободного пространства ширины до прилипания padding 0 10px   */
+    padding: 0 10px;/*что бы блоки не прижимались к экрану монитора или телефона // 0 10px 0 - верх низ ,10px по бокам  */
+    margin: 0 auto; /* ставит блоки по центру */
+}
+.container{/* это стандарт рамки что-бы наш концент был одного и тогоже размера на всех мониках*/
+    max-width: 920px;/* максимальная ширина 1200 + 20px с учетом свободного пространства ширины до прилипания padding 0 10px   */
+    padding: 0 10px;/*что бы блоки не прижимались к экрану монитора или телефона // 0 10px 0 - верх низ ,10px по бокам  */
+    margin: 0 auto; /* ставит блоки по центру */
+}
+body{/*тут можно задать шрифт который будет на протяжении всего сайта  */
+    
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #040404;/* свет строки*/
+    font-size: 14px;/* толщина строки*/
+    line-height: 1.2;/* высота строки*/
+    font-weight: 400px;
+}
+.header{
+    padding-top: 25px;/* отвечает за отступ сверху ,логотипа , контактов и тд*/
+    position: absolute;/*заставит .header дать доступ развернуться фоновой картинке на весь экран 
+      так как у .header есть своя облость и занимаемое пространсво которое мы задали изначально 
+       */
+       /* на этом этапе после position: absolute; картинка уйдет в сторону 
+       что бы это исправить нам нужно сказать html что картинка должна начинаться 
+       с left: 0; и right: 0; */
+    left: 0;/* выравнивам картинку от left: 0; */
+    right: 0;/*выравнивам картинку до right: 0;*/
+    background: linear-gradient(180deg, #d8cad7 0%, rgba(217, 217, 217, 0) 100%);/* у .header ,были параметры которые 
+    я скопирывал из фигмы ,это плавный переход серого цвета  */
+
+}
+
+.nav{/* навигация по сайту .. в нем находится ul -ки и логотип */
+    display: flex; /* собирает в один горизонтальный ряд и в нем находиться функционал где и находиться justify-content: space-between; */ 
+    justify-content: space-between;/* раскидывает по разным сторонам  */ 
+    padding-right: 100px;  
+}
+
+.menu-list{/*это li  где находятся сами меню ,нам их нужно разьеденить*/
+    display: flex;/* выравниваем по горизонту */
+    gap: 0 40px;/* 40px это расстаяние между словами*/
+    padding-top: 25px;/* слова у нас с padding-top 50px ,но я уже буказал в header padding-top 25px в суме 50px*/
+}
+.menu-left{/*у наших меню есть отступы от края до первого элемента списка */
+    padding-left: 29px;
+}
+.menu-right{/*у наших меню есть отступы от края до первого элемента списка */
+    padding-right: 84px;
+}
+.menu-link{/* это ссылки на контент */
+    color: #363636;
+    font-size: 16px;
+}
+.promo{/* добавляем картинку но,она не будет на весь экран */
+    background-image: url(../images/promo.jpg);
+    background-repeat: no-repeat;/*картинка не будет повторяться  */
+    background-size: cover;/*покрывает(растягивает ) всю картинку на все пространство так что бы небыло зазоров  */
+    background-position: center;/*бодет растягивать нашу картинку с центра экрана ,а не где то сбоку  */
+    /*!!!!!нужно сразу же обратиться к .header так как не дает нам полностью развернуть картинку на весь экран 
+    там нужно будет прописать следующее position: absolute; */
+    
+}
+.promo__inner{
+    text-align: center;/* что-бы весь текс стал по центру*/
+    padding-top: 100px;/* расстояние от самого верха */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;/* делает так что бы картинка была на весь экран
+    этот параметр сам подстраиваеться так что бы картинка была четко на весь экран
+     но картинка будет дублирываться так как она будет стоять не по-центру   */
+    /*в <.promo> выше я записываю так что бы картинка не повторялась <background-repeat: no-repeat;> */
+    
+      
+}
+.title{ /*главная надпись*/ 
+    font-family: 'Impact', sans-serif;/* шрифт который я указал в самом верху @font-face*/
+    font-weight: 400;
+    font-size: 76px;
+    letter-spacing: 0.08em;/* отступ между буквами ,можно увидить в фигма */
+    margin-bottom: 10px;
+
+}
+.subtitle{
+    font-family: 'Impact', sans-serif;/* шрифт который я указал в самом верху @font-face*/
+    font-weight: 400;
+    font-size: 48px;
+    border-bottom: 1px solid #040404;/*это черная полоса под словами 3-6 ноября */
+    margin-bottom: 10px;
+    align-self: center;
+    
+
+}
+.subtitle span{
+    display: block;/*display: block; нужен для того что бы наши надписи были не слитные 
+    а образовывались в блок ,я напишу эту команду всего один раз 
+    так как все это унаслудует дочерний клас   */
+    font-size: 34px;
+    color: #9F6B08;/*цвет слов */
+    padding: 10px 0;
+    
+    
+}
+.promo__text{   
+    font-size: 16px;
+    color: #363636;
+    margin-bottom: 10px;
+}
+.promo__group{
+    margin-top: auto;
+    margin-bottom: 30px;
+    align-self: center;
+}
+.info{/* отступ сверху для каждого блока*/
+    margin-bottom: 100px;
+}
+
+.info__part{/* отступ снизу для каждого блока*/
+    padding-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info__part--third{/* отступ снизу для 3-го блока отдельно */
+    padding-top: 66px;
+    
+
+}
+.info__part--first{
+    display: block;/*оставить контент блочным  */
+}
+.info__title{
+    
+    text-transform: uppercase;/* text-transform: uppercase } — используют прописные буквы для выделения важных фрагментов. */
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 300;
+}
+.info__part-textbox{
+    display: flex;/* делю текст на 2-е половины  */
+    justify-content: space-between;
+    gap: 0 20px;
+
+}
+.info__text{
+
+    flex-basis: 400px;/*ужимает пространство блока моего текста */
+    margin-bottom: 30px;
+    
+}
+.info__part-img{
+    object-fit: cover;/* поможет при адаптиве[cover - Заменяемое содержимое имеет размер,
+     чтобы сохранить его пропорции при заполнении всего содержимого поля элемента. Объект
+      будет обрезан по размеру none - Заменяемое содержимое не изменено]*/
+    
+}
+.info__content{
+    flex-basis: 415px;
+   
+}
+.info_part--second .info_text{
+    min-width: 352px;
+    
+}
+.info__part--third .info_text{
+    min-width: 377px;
+    
+}
+
+.info__table{
+    flex-basis: 450px;
+    border-bottom: 1px solid #040404;
+    position: relative;
+    top: 20px;
+}
+.info__table::before{
+    content: '';
+    border-top: 1px solid #040404;
+    position: absolute;
+    width: 100%;
+    top: -20px;
+}
+.info__table td{/* расстояние между блоками */
+    padding-bottom: 20px;
+}
+.track{
+    
+    background-image: url(../images/promo-2.png);
+    background-repeat: no-repeat;/*картинка не будет повторяться  */
+    background-size: cover;/*покрывает(растягивает ) всю картинку на все пространство так что бы небыло зазоров  */
+    background-position: center;/*бодет растягивать нашу картинку с центра экрана ,а не где то сбоку  */
+    /*!!!!!нужно сразу же обратиться к .header так как не дает нам полностью развернуть картинку на весь экран 
+    там нужно будет прописать следующее position: absolute; */
+    
+
+}
+.track__inner{
+
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    
+}
+.track__title{ /* настройки для нашего .ТРЕК ПОРТИМАО.*/
+    font-weight: 300;
+    font-size: 32px;
+    padding-top: 50px;
+    padding-bottom: 30px;
+
+}
+.track__text{
+    max-width:  435px;/* задаем макисальный размер нашему тексту что бы он стал как блок  */
+    margin-bottom: 250px;
+}
+
+.track--img{
+    margin: auto auto 90px auto;
+    
+}
+.evo{
+    font-size: 14px;
+    margin-bottom: 100px;
+}
+.evo-black__inner{/* Относительное позиционирование
+    сдвигает элемент относительно его обычного положения.
+    Для того, чтобы применить относительное 
+    позиционирование, необходимо указать элементу
+    CSS-свойство position: relative и координаты
+    left/right/top/bottom .
+    Заголовок сдвинут на 10px вниз */
+    position: relative;
+}
+.evo-black__inner::before{
+    content: '';
+    background-image: url(../images/dec-1.svg);
+    width: 185px ;
+    height: 213px;
+    position: absolute;
+    top: 210px;
+    left: -110px;
+}
+
+.evo-black__inner::after{
+    content: '';
+    background-image: url(../images/dec-2.svg);
+    width: 498px ;
+    height: 572px;
+    position: absolute;
+    top: 300px;
+    left: -29px;
+
+}
+ .evo-black{
+    background-color: #363636;
+    padding: 100px 0 50px;
+    color: #FFFFFF;/* цвет унаслудуют все, так что не не нужно писать всем белый цвет */
+} 
+.evo-black__info{
+    display: flex;
+    justify-content: center;
+    
+    
+}
+.evo-black__title{
+    font-family: 'Roboto Condensed';
+    text-transform: uppercase;/* text-transform: uppercase } — используют прописные буквы для выделения важных фрагментов. */
+    font-size: 32px;
+    font-weight: 300;
+    padding-right: 50px;
+    
+}
+.evo-black__img{
+
+    display: block;/* картинка строчная  */
+    margin: 170px auto 60px;
+    position: relative;/* приподнимает картинку для обьекта 
+    что будет находиться под ним  */
+    z-index: 1;/* создает еще лдин слой так что бы можно было 
+    уместить обьект под картинку  */
+
+}
+.evo-black__infobox{
+    flex-basis: 437px;
+}
+.evo-black__text{
+    font-size: 14px;
+    margin-bottom: 30px;
+ 
+}
+.evo__descr-list{
+    display: flex;
+    justify-content: center;
+    gap: 0 65px;/* Свойство gap CSS задаёт отступы
+     (gutters (en-US)) между столбцами и строками,
+      а не вдоль края контейнера сетки */
+    
+    
+} 
+.evo__descr-list dd{/*  нужно немного больше выделить слова в таблице dd */
+    text-transform: uppercase;
+}
+
+.evo-white__inner{/*  отступ строки от темного фона */
+    padding-top: 125px;
+    position: relative;
+
+}
+.evo-white__inner::before{
+    content: '';
+    background-image: url(../images/dec-3.png);
+    width: 274px ;
+    height: 257px;
+    position: absolute;
+    top: -30px;
+    left: 350px;
+}
+.evo-white__inner::after{
+    content: '';
+    background-image: url(../images/dec-4.png);
+    width: 324px ;
+    height: 311px;
+    position: absolute;
+    top: 126px;
+    right: -20px;
+}
+.evo-white__text{/*  отступо по 30px на каждую строку */
+    margin-bottom: 30px;
+}
+
+.evo-white__text:first-child {/*ставим ограничение на размер ширины текста   */
+    max-width: 285px;
+}
+.evo-white__text:nth-child(2){
+    max-width: 437px;
+}
+.evo-white__text:nth-child(3){/* есть вариант поставить вместо nth-child на last
+    комп допустит ошибку ,потому что после параграфа у нас идут следующие елементы 
+    и он будет ссылаться на все последующие елементы моей разметки */
+    max-width: 590px;
+}
+.evo-while__video{
+    margin-top: 100px;
+    background-image: url(../images/evo-video.png);
+    background-repeat: no-repeat ;
+    background-position: center;
+    background-size: cover;
+    height: 264px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.evo-white__video-link span{
+    display: block;
+    color: #FFF;
+}
+.blog{
+    margin-bottom: 100px;
+}
+.blog__title{
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+.blog__item-img{
+    margin-bottom: 20px;
+
+}
+.blog__item-titel{
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    min-height: 46px;
+}
+.blog__item-text{/*  отступ до (читать дальше)*/
+    margin-bottom: 10px;
+}
+.blog__item-link{
+    font-size: 12px;
+    color: #363636
+}
+
+.blog__slider{
+    position: relative;
+    padding-top: 50px;
+    margin-bottom: 100px;
+}
+.blog__button{
+    position: absolute;
+    top:0;
+    cursor: pointer;/* для курсора */
+    left: 50%;/* потянуть стререлки от одного конда разметки на середину  */
+}
+.swiper-button-left{/*  разьеденяю кнопки друг от друга*/
+    transform: translateX(-43px);
+}
+.swiper-button-right{
+    transform: translateX(8px);
+}
+.blog__quote{
+    display: flex;/* делим на две части */
+    justify-content: space-between;
+    gap: 0 20px;/*  */
+
+}
+.blog__quote-box{
+    flex-basis: 434px;/* поможет при адаптиве */
+}
+
+.blockquote{
+    margin-bottom: 30px;
+}
+.blockquote__name{
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.blockquote__name span{
+    display: block;
+    font-size: 12px;
+    color: #9F6B08;
+    margin-bottom: 3px;
+}
+.blockquote__text{
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.footer{
+    padding: 100px 0 80px;/*границы блока  */
+    background-color: #363636;
+    color: #fff;
+}
+
+.footer__title{
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 50px;
+}
+.footer__top{
+    display: flex;
+    justify-content: space-between;
+    gap: 0 20px;
+
+}
+.footer__info-item{
+    margin-bottom: 40px;
+
+}
+
+.footer__info-item dt,
+.footer__address-title{
+    font-weight: 700;
+    font-style: 16px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.footer__info-item dd{
+    margin-bottom: 10px;
+
+}
+
+.social__list{
+    display: flex;
+    gap: 0 20px;
+    align-items: center;
+}
+
+.footer__address{
+    flex-basis: 462px;
+}
+#map{
+    height: 250px;
+}
+.footer__address-text{
+    font-style: 16px;
+    margin-bottom: 20px;
+}
+.footer__bottom{
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/*  */
